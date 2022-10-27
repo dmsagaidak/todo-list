@@ -5,7 +5,7 @@ import ToDoList from "./ToDoList/ToDoList";
 function App() {
   const [entries, setEntries] = useState([
     {entry: 'Buy milk'},
-    {entry: 'Wash car'},
+    {entry: 'Walk with dog'},
     {entry: 'Do homework'},
   ])
 
@@ -13,7 +13,7 @@ function App() {
 
   const addEntry = () =>{
     if (newEntry){
-      let newTask = {entry: ''};
+      let newTask = {entry: newEntry};
       const entriesCopy = [...entries, newTask];
       setEntries(entriesCopy);
       setNewEntry('');
@@ -26,6 +26,16 @@ function App() {
     setEntries(entriesCopy);
   }
 
+  let entriesList: React.ReactNode = entries.map((entry, index) =>(
+    <ToDoList
+      entry={entries[index].entry}
+      delete={() => deleteEntry(index)}
+    >
+    </ToDoList>
+    ));
+
+
+
   return (
     <div className="App">
       <h1>My list</h1>
@@ -33,16 +43,7 @@ function App() {
         <input value={newEntry} onChange={(event) => setNewEntry(event.target.value)} placeholder={'Write a task'}/>
         <button onClick={addEntry}>Add</button>
       </div>
-
-      <ToDoList entry={entries[0].entry}
-                delete={() => deleteEntry(0)}
-      />
-      <ToDoList entry={entries[1].entry}
-                delete={() => deleteEntry(1)}
-      />
-      <ToDoList entry={entries[2].entry}
-                delete={() => deleteEntry(2)}
-      />
+      {entriesList}
     </div>
   );
 }
