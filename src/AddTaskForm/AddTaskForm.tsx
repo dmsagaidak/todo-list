@@ -12,7 +12,7 @@ const AddTaskForm: React.FC<AddTaskFormProps> = (props) => {
     <div className="add-task">
       <input value={props.newTask}
       onChange={props.onTaskChange}/>
-      <button onClick={props.onTaskAdd}>Add task</button>
+      <button onClick={props.onTaskAdd} className="add-btn">Add task</button>
     </div>
   );
 };

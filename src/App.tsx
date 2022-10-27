@@ -5,17 +5,19 @@ import AddTaskForm from "./AddTaskForm/AddTaskForm"
 
 function App() {
   const [entries, setEntries] = useState([
-    {entry: 'Buy milk'},
-    {entry: 'Walk with dog'},
-    {entry: 'Do homework'},
+    {entry: 'Buy milk', id: 't1'},
+    {entry: 'Walk with dog', id: 't2'},
+    {entry: 'Do homework', id: 't3'},
   ])
 
   const [newEntry, setNewEntry] = useState('')
 
   const addEntry = () =>{
     if (newEntry){
-      let newTask = {entry: newEntry};
+      const randomID = Math.floor(Math.random() * 10000);
+      let newTask = {entry: newEntry, id: randomID.toString()};
       const entriesCopy = [...entries, newTask];
+
       setEntries(entriesCopy);
       setNewEntry('');
     }
@@ -31,6 +33,8 @@ function App() {
     <Task
       entry={entries[index].entry}
       delete={() => deleteEntry(index)}
+      id={entry.id}
+      key={entry.id}
     >
     </Task>
     ));

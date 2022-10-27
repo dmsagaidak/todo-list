@@ -2,6 +2,7 @@ import React from 'react';
 
 interface TaskProps extends React.PropsWithChildren {
 entry: string;
+id: string;
 delete: React.MouseEventHandler;
 }
 
