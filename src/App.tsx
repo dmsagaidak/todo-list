@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './App.css';
+import './index.css';
 import Task from "./Task/Task";
 import AddTaskForm from "./AddTaskForm/AddTaskForm"
 
@@ -33,7 +33,6 @@ function App() {
     <Task
       entry={entries[index].entry}
       delete={() => deleteEntry(index)}
-      id={entry.id}
       key={entry.id}
     >
     </Task>

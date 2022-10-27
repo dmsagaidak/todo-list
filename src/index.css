@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.App {
+  text-align: center;
+}
+
 .entry{
   width: 80vw;
   border: 2px solid #000;
