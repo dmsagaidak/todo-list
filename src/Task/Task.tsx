@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface ToDoListProps extends React.PropsWithChildren {
+interface TaskProps extends React.PropsWithChildren {
 entry: string;
 delete: React.MouseEventHandler;
 }
 
-const ToDoList: React.FC<ToDoListProps> = (props) => {
+const Task: React.FC<TaskProps> = (props) => {
   return (
     <div className="entry">
       <span>{props.entry}</span>
@@ -15,4 +15,4 @@ const ToDoList: React.FC<ToDoListProps> = (props) => {
   );
 };
 
-export default ToDoList;
+export default Task;

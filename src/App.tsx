@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
-import ToDoList from "./ToDoList/ToDoList";
+import Task from "./Task/Task";
+import AddTaskForm from "./AddTaskForm/AddTaskForm"
 
 function App() {
   const [entries, setEntries] = useState([
@@ -26,12 +27,12 @@ function App() {
     setEntries(entriesCopy);
   }
 
-  let entriesList: React.ReactNode = entries.map((entry, index) =>(
-    <ToDoList
+  const entriesList: React.ReactNode = entries.map((entry, index) =>(
+    <Task
       entry={entries[index].entry}
       delete={() => deleteEntry(index)}
     >
-    </ToDoList>
+    </Task>
     ));
 
 
@@ -39,10 +40,13 @@ function App() {
   return (
     <div className="App">
       <h1>My list</h1>
-      <div>
-        <input value={newEntry} onChange={(event) => setNewEntry(event.target.value)} placeholder={'Write a task'}/>
-        <button onClick={addEntry}>Add</button>
-      </div>
+      <AddTaskForm
+        newTask={newEntry}
+        onTaskChange={(event) => setNewEntry(event.target.value)}
+        onTaskAdd={addEntry}>
+
+      </AddTaskForm>
+
       {entriesList}
     </div>
   );
